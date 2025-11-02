@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BRT Payment Simple</title>
+  <style>
+    body{
+      font-family: Arial, sans-serif;
+      background:#f5f5f5;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      margin:0;
+    }
+    .box{
+      background:white;
+      padding:20px;
+      border-radius:8px;
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+      text-align:center;
+      width:300px;
+    }
+    input, button{
+      padding:8px;
+      margin:6px 0;
+      width:100%;
+      font-size:14px;
+    }
+    .result{
+      margin-top:10px;
+      font-weight:bold;
+      color:#333;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>BRT Fare Calculator</h2>
+    <input id="distance" type="number" placeholder="Enter distance in km" min="1">
+    <button id="calcBtn">Calculate</button>
+    <div id="output" class="result"></div>
+  </div>
+
+  <script>
+    function calculateFare(km){
+      if(km <= 0) return "Invalid distance";
+      if(km <= 5) return "Pay 15 rupees";
+      else if(km <= 10) return "Pay 20 rupees";
+      else if(km <= 15) return "Pay 25 rupees";
+      else if(km <= 20) return "Pay 30 rupees";
+      else if(km <= 25) return "Pay 35 rupees";
+      else if(km <= 30) return "Pay 40 rupees";
+      else if(km <= 35) return "Pay 45 rupees";
+      else if(km <= 40) return "Pay 50 rupees";
+      else return "Distance out of range";
+    }
+
+    const btn = document.getElementById("calcBtn");
+    const input = document.getElementById("distance");
+    const output = document.getElementById("output");
+
+    btn.addEventListener("click", ()=>{
+      let km = Number(input.value);
+      output.textContent = calculateFare(km);
+    });
+  </script>
+</body>
+</html>
